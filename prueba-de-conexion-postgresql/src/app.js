@@ -10,6 +10,12 @@ app.use(bodyParser.json());
 // Rutas
 app.use('/auth', authRoutes);
 
+// Ruta de prueba para verificar el estado del servidor remoto
+app.get("/health", (req, res) => {
+  res.status(200).json({ message: "OK" });
+});
+
+
 // Conexión a la base de datos
 sequelize.authenticate({ 
 logging: (msg) => {
