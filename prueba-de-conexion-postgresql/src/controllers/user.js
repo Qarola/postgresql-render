@@ -33,7 +33,32 @@ async function login(req, res) {
       console.error('Error al hacer login:', error);
       res.status(500).json({ error: 'Error al hacer login' });
     }
+  };
+
+  // userController.js
+
+
+// Busca un usuario por su ID
+async function findUserById (req, res) {
+  try {
+    const userId = req.params.id; // ID del usuario proporcionado en la URL
+    const user = await User.findByPk(userId); // Busca el usuario por su ID
+
+    if (!user) {
+      return res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+
+    // Si se encuentra el usuario, puedes devolverlo como respuesta
+    return res.status(200).json(user);
+  } catch (error) {
+    console.error('Error al buscar el usuario:', error);
+    return res.status(500).json({ message: 'Error interno del servidor' });
   }
+}
   
 
-module.exports = { register, login };
+module.exports = { 
+  register, 
+  login,
+  findUserById,
+ };

@@ -2,6 +2,11 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../../config');
 
 const User = sequelize.define('User', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
   username: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -18,7 +23,20 @@ const User = sequelize.define('User', {
   password: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  createdAt: {
+    type: DataTypes.DATE
+  },
+  updatedAt: {
+    type: DataTypes.DATE
   }
 });
 
-module.exports = User;
+// Sincroniza el modelo con la base de datos
+sequelize.sync({ force: true }).then(() => {
+  console.log('La base de datos ha sido sincronizada correctamente.');
+}).catch((error) => {
+  console.error('Error al sincronizar la base de datos:', error);
+});
+
+module.exports = { sequelize, User };
