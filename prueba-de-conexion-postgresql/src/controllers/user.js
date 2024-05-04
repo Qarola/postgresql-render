@@ -39,10 +39,10 @@ async function login(req, res) {
 
 
 // Busca un usuario por su ID
-async function findUserById (req, res) {
+async function findUserById(req, res) {
   try {
     const userId = req.params.id; // ID del usuario proporcionado en la URL
-    const user = await User.findByPk(userId); // Busca el usuario por su ID
+    const user = await User.findByPk({ where: { id: userId } }); // Busca el usuario por su ID
 
     if (!user) {
       return res.status(404).json({ message: 'Usuario no encontrado' });
@@ -55,7 +55,7 @@ async function findUserById (req, res) {
     return res.status(500).json({ message: 'Error interno del servidor' });
   }
 }
-  
+
 
 module.exports = { 
   register, 

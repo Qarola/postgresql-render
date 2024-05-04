@@ -10,6 +10,6 @@ router.post('/register', register);
 router.post('/login', login);
 
 //Ruta para buscar un usuario po id
-router.get('/:id', findUserById)
+router.post('/:id', findUserById)
 
 module.exports = router;
