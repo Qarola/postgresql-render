@@ -1,5 +1,5 @@
 const express = require('express');
-const { register, login, findUserById } = require('../controllers/userController');
+const { register, login, findUserById, getAllUsers, createUser } = require('../controllers/userController');
 
 const router = express.Router();
 
@@ -14,8 +14,8 @@ router.post('/:id', findUserById)
 
 
 // Rutas para usuarios
-router.get("/users", userController);
-router.post("/users", userController);
+router.get("/users", getAllUsers);
+router.post("/users", createUser);
 
 
 module.exports = router;

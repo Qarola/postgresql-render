@@ -1,10 +1,10 @@
 // reviewRoutes.js
 const express = require("express");
 const router = express.Router();
-const reviewController = require("../controllers/reviewController");
+const { getAllReviews, createReview } = require("../controllers/reviewController");
 
 // Rutas para reviews
-router.get("/reviews", reviewController);
-router.post("/reviews", reviewController);
+router.get("/reviews", getAllReviews);
+router.post("/reviews", createReview);
 
 module.exports = router;
