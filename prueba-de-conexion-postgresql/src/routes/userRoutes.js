@@ -14,8 +14,8 @@ router.post('/:id', findUserById)
 
 
 // Rutas para usuarios
-router.get("/users", userController.getAllUsers);
-router.post("/users", userController.createUser);
+router.get("/users", userController);
+router.post("/users", userController);
 
 
 module.exports = router;
