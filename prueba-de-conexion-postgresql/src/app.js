@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 //const authRoutes = require('./routes/user');
@@ -24,8 +25,12 @@ conn
   })
   .then(() => {
     console.log(
-      "Conexión a la base de datos PostgreSQL establecida correctamente."
+      "Conexión a la base de datos PostgreSQL en Render es establecida correctamente."
     );
+     // Sincroniza modelos si es necesario (por ejemplo, en un entorno de desarrollo)
+     if (process.env.NODE_ENV !== "production") {
+      conn.sync();
+    }
   })
   .catch((err) => {
     console.error("Error al conectar a la base de datos:", err);
