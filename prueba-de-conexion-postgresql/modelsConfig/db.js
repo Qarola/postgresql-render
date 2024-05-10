@@ -5,7 +5,7 @@ const path = require("path");
 
 
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  logging: true, // false: Se puede habilitar esto para ver las consultas SQL en la consola
+  logging: true, // Si está en false, e puede habilitar esto para ver las consultas SQL en la consola
   dialectOptions: {
     ssl: {
       require: false,
