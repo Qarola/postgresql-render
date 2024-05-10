@@ -2,7 +2,7 @@ const User = require('../models/UserModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-async function register(req, res) {
+exports.register = async (req, res) => {
   const { username, email, password } = req.body;
   try {
     const user = await User.create({ username, email, password });
@@ -13,7 +13,7 @@ async function register(req, res) {
   }
 }
 
-async function login(req, res) {
+exports.login = async (req, res) => {
     const { username, password } = req.body;
     try {
       // Buscar usuario por nombre de usuario
@@ -39,7 +39,7 @@ async function login(req, res) {
 
 
 // Busca un usuario por su ID
-async function findUserById(req, res) {
+exports.findUserById = async (req, res) =>{  
   try {
     const userId = req.params.id; // ID del usuario proporcionado en la URL
     const user = await User.findByPk({ where: { id: userId } }); // Busca el usuario por su ID
@@ -79,12 +79,4 @@ exports.createUser = async (req, res) => {
   }
 };
 
-// Otros métodos CRUD para usuarios...
 
-
-
-module.exports = { 
-  register, 
-  login,
-  findUserById,
- };

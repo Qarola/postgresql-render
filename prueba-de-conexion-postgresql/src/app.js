@@ -2,9 +2,9 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 //const authRoutes = require('./routes/user');
+const userRoutes = require('./routes/userRoutes.js');
 const productRoutes = require('./routes/productRoutes.js');
 const reviewRoutes = require('./routes/reviewRoutes.js');
-const userRoutes = require('./routes/userRoutes.js');
 const { conn } = require("../modelsConfig/db");
 
 const app = express();
@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 //app.use('/auth', authRoutes);
 app.use('/product', productRoutes);
 app.use('/review', reviewRoutes);
-app.use('user', userRoutes);
+app.use('/user', userRoutes);
 
 // Ruta de prueba para verificar el estado del servidor remoto
 app.get("/health", (req, res) => {

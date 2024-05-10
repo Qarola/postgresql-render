@@ -3,6 +3,12 @@ const { register, login, findUserById, getAllUsers, createUser } = require('../c
 
 const router = express.Router();
 
+// Rutas para usuarios
+router.post("/users", createUser);
+
+router.get("/users", getAllUsers);
+
+
 // Ruta para registro de usuario
 router.post('/register', register);
 
@@ -13,9 +19,7 @@ router.post('/login', login);
 router.post('/:id', findUserById)
 
 
-// Rutas para usuarios
-router.get("/users", getAllUsers);
-router.post("/users", createUser);
+
 
 
 module.exports = router;
