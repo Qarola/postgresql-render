@@ -24,8 +24,8 @@ conn
       return Review.create({
         userId: 1, // Aquí debes proporcionar el ID del usuario
         productId: 1, // Aquí debes proporcionar el ID del producto
-        calification: 4,
-        comment: "Excelente producto",
+        calification: 5,
+        comment: "Excelente producto. Lo recomiendo.",
       });
     });
   })
